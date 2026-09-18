@@ -38,22 +38,24 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/60 bg-white/70 backdrop-blur-md">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-3 py-2.5 sm:px-5">
-        <div className="flex min-w-0 items-center gap-2">
+        <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
           {!isHome ? (
             <>
               <button
                 onClick={goBack}
                 aria-label="Go back"
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-purple-100 text-purple-600 active:scale-90 transition"
+                className="flex shrink-0 items-center gap-1 rounded-full bg-purple-100 px-3 py-2 text-xs font-bold text-purple-600 shadow-sm active:scale-95 transition"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={18} />
+                <span>Back</span>
               </button>
               <button
                 onClick={() => navigate('/')}
                 aria-label="Main menu"
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-purple-100 text-purple-600 active:scale-90 transition"
+                className="flex shrink-0 items-center gap-1 rounded-full bg-purple-100 px-3 py-2 text-xs font-bold text-purple-600 shadow-sm active:scale-95 transition"
               >
-                <Home size={17} />
+                <Home size={16} />
+                <span>Home</span>
               </button>
             </>
           ) : (
@@ -61,7 +63,12 @@ export default function Header() {
               <Sparkles size={18} />
             </span>
           )}
-          <Link to="/" className="min-w-0 truncate font-display text-base font-extrabold text-slate-800 sm:text-lg">
+          <Link
+            to="/"
+            className={`min-w-0 truncate font-display text-base font-extrabold text-slate-800 sm:text-lg ${
+              !isHome ? 'hidden sm:block' : ''
+            }`}
+          >
             Riya's Tech Play
           </Link>
         </div>
