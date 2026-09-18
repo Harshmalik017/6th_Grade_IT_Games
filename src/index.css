@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Baloo 2", "Poppins", ui-rounded, "Segoe UI", sans-serif;
+  --font-body: "Poppins", "Segoe UI", sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: radial-gradient(circle at 10% 0%, #fdf2ff 0%, #eef2ff 40%, #fff7ed 100%);
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8b4fe;
+  border-radius: 999px;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-pop {
+  animation: pop-in 0.25s ease-out;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+.animate-wiggle {
+  animation: wiggle 0.4s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float-slow 4s ease-in-out infinite;
+}
