@@ -28,16 +28,41 @@ import {
   sequenceDigestion,
   sequenceBreathing,
 } from '../data/siyaOrgans';
+import {
+  creepyQuiz,
+  creepyTrueFalse,
+  creepyFillBlanks,
+  creepyScramble,
+  creepyMatchPairs,
+  sortCreepyHelpfulHarmful,
+  sortCreepyFood,
+  sequenceEarthwormSoil,
+  sequenceInsectIdentify,
+} from '../data/siyaCreepyCrawlies';
 import { birdsMatchPairs, organsMatchPairs } from '../data/siyaMatchPairs';
 import { siyaGamesList } from '../data/siyaGamesList';
 
-const mixedQuiz = [...birdsQuiz, ...organsQuiz];
-const mixedTrueFalse = [...birdsTrueFalse, ...organsTrueFalse];
-const mixedFillBlanks = [...birdsFillBlanks, ...organsFillBlanks];
-const mixedScramble = [...birdsScramble, ...organsScramble];
-const mixedMatchPairs = [...birdsMatchPairs, ...organsMatchPairs];
-const allSortDatasets = [sortBirdsByFeet, sortBirdsByNest, sortOrgansExternalInternal, sortOrgansBySystem];
-const allSequenceDatasets = [sequenceBirdFlight, sequenceWoodpecker, sequenceDigestion, sequenceBreathing];
+const mixedQuiz = [...birdsQuiz, ...creepyQuiz, ...organsQuiz];
+const mixedTrueFalse = [...birdsTrueFalse, ...creepyTrueFalse, ...organsTrueFalse];
+const mixedFillBlanks = [...birdsFillBlanks, ...creepyFillBlanks, ...organsFillBlanks];
+const mixedScramble = [...birdsScramble, ...creepyScramble, ...organsScramble];
+const mixedMatchPairs = [...birdsMatchPairs, ...creepyMatchPairs, ...organsMatchPairs];
+const allSortDatasets = [
+  sortBirdsByFeet,
+  sortBirdsByNest,
+  sortCreepyHelpfulHarmful,
+  sortCreepyFood,
+  sortOrgansExternalInternal,
+  sortOrgansBySystem,
+];
+const allSequenceDatasets = [
+  sequenceBirdFlight,
+  sequenceWoodpecker,
+  sequenceEarthwormSoil,
+  sequenceInsectIdentify,
+  sequenceDigestion,
+  sequenceBreathing,
+];
 
 export default function SiyaGamePage() {
   const { gameId } = useParams();
@@ -63,6 +88,24 @@ export default function SiyaGamePage() {
     case 'siya-birds-sequence':
       return <SequenceGame gameId={meta.id} title={meta.title} emoji={meta.emoji} datasets={[sequenceBirdFlight, sequenceWoodpecker]} />;
 
+    // ---------- Chapter 5: Creepy Crawlies ----------
+    case 'siya-creepy-quiz':
+      return <QuizGame gameId={meta.id} title={meta.title} emoji={meta.emoji} questions={creepyQuiz} questionCount={10} accentClass="bg-lime-500" />;
+    case 'siya-creepy-true-false':
+      return <TrueFalseGame gameId={meta.id} title={meta.title} emoji={meta.emoji} items={creepyTrueFalse} questionCount={10} accentClass="bg-emerald-500" />;
+    case 'siya-creepy-memory-match':
+      return <MemoryMatchGame gameId={meta.id} title={meta.title} emoji={meta.emoji} pairs={creepyMatchPairs} pairCount={6} />;
+    case 'siya-creepy-term-matcher':
+      return <TermMatcherGame gameId={meta.id} title={meta.title} emoji={meta.emoji} pairs={creepyMatchPairs} pairCount={8} />;
+    case 'siya-creepy-fill-blank':
+      return <FillBlankGame gameId={meta.id} title={meta.title} emoji={meta.emoji} items={creepyFillBlanks} questionCount={10} />;
+    case 'siya-creepy-word-scramble':
+      return <WordScrambleGame gameId={meta.id} title={meta.title} emoji={meta.emoji} items={creepyScramble} questionCount={8} />;
+    case 'siya-creepy-sort':
+      return <SortGame gameId={meta.id} title={meta.title} emoji={meta.emoji} datasets={[sortCreepyHelpfulHarmful, sortCreepyFood]} />;
+    case 'siya-creepy-sequence':
+      return <SequenceGame gameId={meta.id} title={meta.title} emoji={meta.emoji} datasets={[sequenceEarthwormSoil, sequenceInsectIdentify]} />;
+
     // ---------- Chapter 6: Organs Working Together ----------
     case 'siya-organs-quiz':
       return <QuizGame gameId={meta.id} title={meta.title} emoji={meta.emoji} questions={organsQuiz} questionCount={10} accentClass="bg-rose-500" />;
@@ -81,7 +124,7 @@ export default function SiyaGamePage() {
     case 'siya-organs-sequence':
       return <SequenceGame gameId={meta.id} title={meta.title} emoji={meta.emoji} datasets={[sequenceDigestion, sequenceBreathing]} />;
 
-    // ---------- Combined: Both Chapters ----------
+    // ---------- Combined: All Chapters ----------
     case 'siya-combined-quiz':
       return <QuizGame gameId={meta.id} title={meta.title} emoji={meta.emoji} questions={mixedQuiz} questionCount={12} accentClass="bg-indigo-500" />;
     case 'siya-combined-true-false':

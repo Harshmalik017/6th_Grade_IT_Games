@@ -6,7 +6,7 @@ import TechImage from '../components/TechImage';
 import { loadScores, type ScoreBoard } from '../utils/storage';
 
 function isSiyaChapterGroup(group: string | undefined): group is SiyaChapterGroup {
-  return group === 'birds' || group === 'organs' || group === 'combined';
+  return group === 'birds' || group === 'creepy' || group === 'organs' || group === 'combined';
 }
 
 export default function SiyaChapterPage() {

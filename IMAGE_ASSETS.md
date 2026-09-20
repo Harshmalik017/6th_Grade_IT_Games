@@ -28,8 +28,9 @@ Recommended size: **512×512px**, PNG, transparent background if possible.
 | `chapter5-cover.png` | Riya Chapter 6 home card | A cute globe with Wi-Fi signal waves, connected to a laptop, smartphone and shopping bag icons — internet/connectivity theme |
 | `combined-cover.png` | "Both Chapters" home card | A golden trophy with sparkles, surrounded by mixed tech + internet icons, celebratory "all-star" theme |
 | `chapter-birds-cover.png` | Siya Chapter 4 home card | A cute group of birds with feathers, beaks, claws and a nest, bright nature colors |
+| `chapter-creepy-cover.png` | Siya Chapter 5 home card | Cute friendly insects and worms together, including ant, butterfly, honeybee and earthworm, bright garden theme |
 | `chapter-organs-cover.png` | Siya Chapter 6 home card | Friendly cartoon body organs and bones working together, kid-safe and cheerful |
-| `combined-siya-cover.png` | Siya "Both Chapters" home card | A golden trophy with cute birds, feathers, bones and organ icons around it |
+| `combined-siya-cover.png` | Siya "All Chapters" home card | A golden trophy with cute birds, insects, worms, bones and organ icons around it |
 | `profile-riya.png` | Riya profile card | A smiling Class 6 girl holding a laptop or book, cheerful learning theme |
 | `profile-siya.png` | Siya profile card | A smiling Class 3 girl with a science book, birds and body learning icons nearby |
 

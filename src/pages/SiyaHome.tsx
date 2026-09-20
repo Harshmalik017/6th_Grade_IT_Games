@@ -15,6 +15,7 @@ export default function SiyaHome() {
   }, []);
 
   const birdsGames = siyaGamesForGroup('birds');
+  const creepyGames = siyaGamesForGroup('creepy');
   const organsGames = siyaGamesForGroup('organs');
   const combinedGames = siyaGamesForGroup('combined');
 
@@ -37,7 +38,7 @@ export default function SiyaHome() {
           <div>
             <p className="text-xs font-bold uppercase tracking-wide text-sky-500">Subject</p>
             <h2 className="font-display text-xl font-extrabold text-slate-800">Science</h2>
-            <p className="text-xs text-slate-500">Siya · Class 3 · Chapter 4 &amp; Chapter 6</p>
+            <p className="text-xs text-slate-500">Siya · Class 3 · Chapter 4, 5 &amp; 6</p>
           </div>
           <span className="rounded-2xl bg-sky-100 px-3 py-2 text-2xl">🔬</span>
         </div>
@@ -55,6 +56,18 @@ export default function SiyaHome() {
             gameCount={birdsGames.length}
             starsEarned={starsEarnedFor(scores, birdsGames.map((g) => g.id))}
             maxStars={birdsGames.length * 3}
+          />
+          <ChapterCard
+            to="/siya/chapter/creepy"
+            title={siyaChapterMeta.creepy.title}
+            subtitle={siyaChapterMeta.creepy.subtitle}
+            emoji={siyaChapterMeta.creepy.emoji}
+            img={siyaChapterMeta.creepy.img}
+            gradient={siyaChapterMeta.creepy.gradient}
+            blurb={siyaChapterMeta.creepy.blurb}
+            gameCount={creepyGames.length}
+            starsEarned={starsEarnedFor(scores, creepyGames.map((g) => g.id))}
+            maxStars={creepyGames.length * 3}
           />
           <ChapterCard
             to="/siya/chapter/organs"
