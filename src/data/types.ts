@@ -1,6 +1,6 @@
 // Shared content types used across all games
 
-export type ChapterId = 4 | 5 | 6;
+export type ChapterId = 2 | 3 | 4 | 5 | 6;
 
 export interface QuizQuestion {
   id: string;

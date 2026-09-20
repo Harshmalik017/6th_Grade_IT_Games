@@ -32,48 +32,59 @@ export default function Home() {
         </p>
       </section>
 
-      <h2 className="mt-7 mb-3 font-display text-lg font-bold text-slate-700">Choose a Chapter 📖</h2>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <ChapterCard
-          to="/chapter/4"
-          title={chapterMeta[4].title}
-          subtitle={chapterMeta[4].subtitle}
-          emoji={chapterMeta[4].emoji}
-          img={chapterMeta[4].img}
-          gradient={chapterMeta[4].gradient}
-          blurb={chapterMeta[4].blurb}
-          gameCount={ch4Games.length}
-          starsEarned={starsEarnedFor(scores, ch4Games.map((g) => g.id))}
-          maxStars={ch4Games.length * 3}
-        />
-        <ChapterCard
-          to="/chapter/5"
-          title={chapterMeta[5].title}
-          subtitle={chapterMeta[5].subtitle}
-          emoji={chapterMeta[5].emoji}
-          img={chapterMeta[5].img}
-          gradient={chapterMeta[5].gradient}
-          blurb={chapterMeta[5].blurb}
-          gameCount={ch5Games.length}
-          starsEarned={starsEarnedFor(scores, ch5Games.map((g) => g.id))}
-          maxStars={ch5Games.length * 3}
-        />
-      </div>
+      <section className="mt-7 rounded-3xl bg-white/80 p-4 shadow-lg shadow-purple-100 ring-1 ring-purple-100">
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wide text-purple-500">Subject</p>
+            <h2 className="font-display text-xl font-extrabold text-slate-800">Computer Science</h2>
+            <p className="text-xs text-slate-500">Riya · Class 6 · Chapter 4 &amp; Chapter 6</p>
+          </div>
+          <span className="rounded-2xl bg-purple-100 px-3 py-2 text-2xl">💻</span>
+        </div>
 
-      <div className="mt-4">
-        <ChapterCard
-          to="/chapter/combined"
-          title={combinedMeta.title}
-          subtitle={combinedMeta.subtitle}
-          emoji={combinedMeta.emoji}
-          img={combinedMeta.img}
-          gradient={combinedMeta.gradient}
-          blurb={combinedMeta.blurb}
-          gameCount={combinedGames.length}
-          starsEarned={starsEarnedFor(scores, combinedGames.map((g) => g.id))}
-          maxStars={combinedGames.length * 3}
-        />
-      </div>
+        <h3 className="mb-3 font-display text-lg font-bold text-slate-700">Choose a Chapter 📖</h3>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ChapterCard
+            to="/chapter/4"
+            title={chapterMeta[4].title}
+            subtitle={chapterMeta[4].subtitle}
+            emoji={chapterMeta[4].emoji}
+            img={chapterMeta[4].img}
+            gradient={chapterMeta[4].gradient}
+            blurb={chapterMeta[4].blurb}
+            gameCount={ch4Games.length}
+            starsEarned={starsEarnedFor(scores, ch4Games.map((g) => g.id))}
+            maxStars={ch4Games.length * 3}
+          />
+          <ChapterCard
+            to="/chapter/5"
+            title={chapterMeta[5].title}
+            subtitle={chapterMeta[5].subtitle}
+            emoji={chapterMeta[5].emoji}
+            img={chapterMeta[5].img}
+            gradient={chapterMeta[5].gradient}
+            blurb={chapterMeta[5].blurb}
+            gameCount={ch5Games.length}
+            starsEarned={starsEarnedFor(scores, ch5Games.map((g) => g.id))}
+            maxStars={ch5Games.length * 3}
+          />
+        </div>
+
+        <div className="mt-4">
+          <ChapterCard
+            to="/chapter/combined"
+            title={combinedMeta.title}
+            subtitle={combinedMeta.subtitle}
+            emoji={combinedMeta.emoji}
+            img={combinedMeta.img}
+            gradient={combinedMeta.gradient}
+            blurb={combinedMeta.blurb}
+            gameCount={combinedGames.length}
+            starsEarned={starsEarnedFor(scores, combinedGames.map((g) => g.id))}
+            maxStars={combinedGames.length * 3}
+          />
+        </div>
+      </section>
 
       <p className="mt-8 text-center text-xs text-slate-400">
         🎮 {gamesList.length} games in total across all chapters. Scores are saved on this device, so clearing your

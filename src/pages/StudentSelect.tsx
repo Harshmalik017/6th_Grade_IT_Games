@@ -12,13 +12,15 @@ export default function StudentSelect() {
         <p className="relative mt-2 text-sm text-purple-100">Whose turn is it to play and learn today?</p>
       </section>
 
-      <h2 className="mt-7 mb-3 text-center font-display text-lg font-bold text-slate-700">Choose Your Profile 🙋</h2>
+      <h2 className="mt-7 mb-3 text-center font-display text-lg font-bold text-slate-700">
+        Choose Your Profile &amp; Subject 🙋
+      </h2>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <StudentCard
           to="/riya"
           name="Riya"
           classLabel="Class 6"
-          subtitle="Subject: Computer Science · Chapter 4 & 6 revision games!"
+          subtitle="Subjects: Computer Science and Science revision games!"
           emoji="👧"
           img="profile-riya"
           gradient="from-fuchsia-500 via-purple-500 to-indigo-500"

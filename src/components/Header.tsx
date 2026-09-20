@@ -4,12 +4,20 @@ import ConfirmDialog, { useConfirmDialog } from './ConfirmDialog';
 import { resetAllScores, totalStarsCollected } from '../utils/storage';
 import { gamesList } from '../data/gamesList';
 import { siyaGamesList } from '../data/siyaGamesList';
+import { riyaScienceGamesList } from '../data/riyaScience';
 import { useEffect, useState } from 'react';
 
-const allGameIds = [...gamesList.map((g) => g.id), ...siyaGamesList.map((g) => g.id)];
+const riyaGameIds = [...gamesList.map((g) => g.id), ...riyaScienceGamesList.map((g) => g.id)];
+const allGameIds = [...riyaGameIds, ...siyaGamesList.map((g) => g.id)];
 
 function idsForPath(pathname: string): string[] {
-  if (pathname === '/riya' || pathname.startsWith('/chapter/') || pathname.startsWith('/game/')) {
+  if (pathname === '/riya') {
+    return riyaGameIds;
+  }
+  if (pathname === '/riya/science' || pathname.startsWith('/riya/science/')) {
+    return riyaScienceGamesList.map((g) => g.id);
+  }
+  if (pathname === '/riya/computer' || pathname.startsWith('/chapter/') || pathname.startsWith('/game/')) {
     return gamesList.map((g) => g.id);
   }
   if (pathname === '/siya' || pathname.startsWith('/siya/')) {
@@ -20,7 +28,9 @@ function idsForPath(pathname: string): string[] {
 
 function titleForPath(pathname: string): string {
   if (pathname === '/siya' || pathname.startsWith('/siya/')) return "Siya's Science Play";
-  if (pathname === '/riya' || pathname.startsWith('/chapter/') || pathname.startsWith('/game/')) return "Riya's Computer Science Play";
+  if (pathname === '/riya/science' || pathname.startsWith('/riya/science/')) return "Riya's Science Play";
+  if (pathname === '/riya/computer' || pathname.startsWith('/chapter/') || pathname.startsWith('/game/')) return "Riya's Computer Science Play";
+  if (pathname === '/riya') return "Riya's Learning Play";
   return 'Learning Games';
 }
 
@@ -45,16 +55,25 @@ export default function Header() {
 
   function goBack() {
     const gameMatch = location.pathname.match(/^\/game\/([^/]+)/);
+    const riyaScienceGameMatch = location.pathname.match(/^\/riya\/science\/game\/([^/]+)/);
     const siyaGameMatch = location.pathname.match(/^\/siya\/game\/([^/]+)/);
     if (gameMatch) {
       const game = gamesList.find((g) => g.id === gameMatch[1]);
       const group = game?.chapterGroup;
       navigate(group ? `/chapter/${group}` : '/riya');
+    } else if (riyaScienceGameMatch) {
+      const game = riyaScienceGamesList.find((g) => g.id === riyaScienceGameMatch[1]);
+      const group = game?.chapterGroup;
+      navigate(group ? `/riya/science/chapter/${group}` : '/riya/science');
     } else if (siyaGameMatch) {
       const game = siyaGamesList.find((g) => g.id === siyaGameMatch[1]);
       const group = game?.chapterGroup;
       navigate(group ? `/siya/chapter/${group}` : '/siya');
     } else if (location.pathname.startsWith('/chapter/')) {
+      navigate('/riya/computer');
+    } else if (location.pathname.startsWith('/riya/science/chapter/')) {
+      navigate('/riya/science');
+    } else if (location.pathname === '/riya/computer' || location.pathname === '/riya/science') {
       navigate('/riya');
     } else if (location.pathname.startsWith('/siya/chapter/')) {
       navigate('/siya');
@@ -108,9 +127,10 @@ export default function Header() {
           <button
             onClick={confirm.show}
             aria-label="Reset all progress"
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-100 text-rose-600 active:scale-90 transition"
+            className="flex h-9 items-center justify-center gap-1 rounded-full bg-rose-100 px-3 text-xs font-bold text-rose-600 shadow-sm active:scale-95 transition"
           >
             <RotateCcw size={17} />
+            <span>Data Reset</span>
           </button>
         </div>
       </div>
