@@ -21,7 +21,7 @@ export const gamesList: GameMeta[] = [
   { id: 'sort-it-out-4', title: 'Sort It Out!', description: 'Put each item in its correct group!', emoji: '🗂️', img: 'game-sort', chapterGroup: 4, gradient: 'from-amber-500 to-orange-600' },
   { id: 'sequence-builder-4', title: 'Step Order Challenge', description: 'Put the steps in the right order!', emoji: '🔢', img: 'game-sequence', chapterGroup: 4, gradient: 'from-teal-500 to-emerald-600' },
 
-  // ---------- Chapter 5: Internet Services ----------
+  // ---------- Chapter 6: Internet Services ----------
   { id: 'net-quiz', title: 'Web Wizard Quiz', description: 'Test what you know about the Internet & shopping online!', emoji: '🌐', img: 'game-quiz', chapterGroup: 5, gradient: 'from-sky-500 to-blue-600' },
   { id: 'true-false-net', title: 'True or Flop: Web World', description: 'Tap True or False for Internet facts!', emoji: '🧐', img: 'game-truefalse', chapterGroup: 5, gradient: 'from-orange-500 to-amber-600' },
   { id: 'memory-match-5', title: 'Memory Match: Web Icons', description: 'Flip cards & find matching web pairs!', emoji: '🧩', img: 'game-memory', chapterGroup: 5, gradient: 'from-pink-500 to-rose-600' },
@@ -53,7 +53,7 @@ export const chapterMeta = {
     blurb: 'AI, VR, AR, Blockchain, Metaverse, Robots & more!',
   },
   5: {
-    title: 'Chapter 5',
+    title: 'Chapter 6',
     subtitle: 'Internet Services',
     emoji: '🌐',
     img: 'chapter5-cover',
@@ -68,7 +68,7 @@ export const combinedMeta = {
   emoji: '🏆',
   img: 'combined-cover',
   gradient: 'from-amber-500 via-orange-500 to-pink-500',
-  blurb: 'Mix it up! Games that cover Chapter 4 and 5 together.',
+  blurb: 'Mix it up! Games that cover Chapter 4 and 6 together.',
 };
 
 export function gamesForGroup(group: ChapterGroup): GameMeta[] {

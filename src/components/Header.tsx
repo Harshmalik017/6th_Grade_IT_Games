@@ -3,9 +3,26 @@ import { ChevronLeft, Home, RotateCcw, Sparkles } from 'lucide-react';
 import ConfirmDialog, { useConfirmDialog } from './ConfirmDialog';
 import { resetAllScores, totalStarsCollected } from '../utils/storage';
 import { gamesList } from '../data/gamesList';
+import { siyaGamesList } from '../data/siyaGamesList';
 import { useEffect, useState } from 'react';
 
-const MAX_STARS = gamesList.length * 3;
+const allGameIds = [...gamesList.map((g) => g.id), ...siyaGamesList.map((g) => g.id)];
+
+function idsForPath(pathname: string): string[] {
+  if (pathname === '/riya' || pathname.startsWith('/chapter/') || pathname.startsWith('/game/')) {
+    return gamesList.map((g) => g.id);
+  }
+  if (pathname === '/siya' || pathname.startsWith('/siya/')) {
+    return siyaGamesList.map((g) => g.id);
+  }
+  return allGameIds;
+}
+
+function titleForPath(pathname: string): string {
+  if (pathname === '/siya' || pathname.startsWith('/siya/')) return "Siya's Science Play";
+  if (pathname === '/riya' || pathname.startsWith('/chapter/') || pathname.startsWith('/game/')) return "Riya's Computer Science Play";
+  return 'Learning Games';
+}
 
 export default function Header() {
   const location = useLocation();
@@ -13,9 +30,11 @@ export default function Header() {
   const isHome = location.pathname === '/';
   const confirm = useConfirmDialog();
   const [stars, setStars] = useState(0);
+  const currentGameIds = idsForPath(location.pathname);
+  const maxStars = currentGameIds.length * 3;
 
   useEffect(() => {
-    setStars(totalStarsCollected(gamesList.map((g) => g.id)));
+    setStars(totalStarsCollected(idsForPath(location.pathname)));
   }, [location]);
 
   function handleReset() {
@@ -26,10 +45,19 @@ export default function Header() {
 
   function goBack() {
     const gameMatch = location.pathname.match(/^\/game\/([^/]+)/);
+    const siyaGameMatch = location.pathname.match(/^\/siya\/game\/([^/]+)/);
     if (gameMatch) {
       const game = gamesList.find((g) => g.id === gameMatch[1]);
       const group = game?.chapterGroup;
-      navigate(group ? `/chapter/${group}` : '/');
+      navigate(group ? `/chapter/${group}` : '/riya');
+    } else if (siyaGameMatch) {
+      const game = siyaGamesList.find((g) => g.id === siyaGameMatch[1]);
+      const group = game?.chapterGroup;
+      navigate(group ? `/siya/chapter/${group}` : '/siya');
+    } else if (location.pathname.startsWith('/chapter/')) {
+      navigate('/riya');
+    } else if (location.pathname.startsWith('/siya/chapter/')) {
+      navigate('/siya');
     } else {
       navigate('/');
     }
@@ -69,13 +97,13 @@ export default function Header() {
               !isHome ? 'hidden sm:block' : ''
             }`}
           >
-            Riya's Tech Play
+            {titleForPath(location.pathname)}
           </Link>
         </div>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <div className="flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-1.5 ring-1 ring-amber-200">
-            <span className="text-sm font-bold text-amber-600">⭐ {stars}/{MAX_STARS}</span>
+            <span className="text-sm font-bold text-amber-600">⭐ {stars}/{maxStars}</span>
           </div>
           <button
             onClick={confirm.show}

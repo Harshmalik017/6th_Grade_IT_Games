@@ -63,6 +63,15 @@ export function resetAllScores() {
   }
 }
 
+export function resetScoresForGames(gameIds: string[]) {
+  const idSet = new Set(gameIds);
+  const board = loadScores();
+  for (const id of Object.keys(board)) {
+    if (idSet.has(id)) delete board[id];
+  }
+  saveScores(board);
+}
+
 export function totalStarsCollected(gameIds: string[]): number {
   const board = loadScores();
   return gameIds.reduce((sum, id) => sum + (board[id]?.bestStars ?? 0), 0);

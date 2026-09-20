@@ -19,7 +19,7 @@ export const chapter4MatchPairs: MatchPair[] = [
   { id: 'c4m14', chapter: 4, term: 'SEO', definition: 'Ways to help a website show up higher in search results', emoji: '🔍', img: 'seo' },
 ];
 
-// Chapter 5 - Internet Services: term <-> meaning pairs
+// Chapter 6 - Internet Services: term <-> meaning pairs
 export const chapter5MatchPairs: MatchPair[] = [
   { id: 'c5m1', chapter: 5, term: 'Modem', definition: 'A device that connects a computer to a phone line for the Internet', emoji: '📠', img: 'modem' },
   { id: 'c5m2', chapter: 5, term: 'Hotspot', definition: 'A wireless spot that gives nearby devices the Internet', emoji: '🔥', img: 'hotspot' },

@@ -63,7 +63,7 @@ export default function GamePage() {
     case 'sequence-builder-4':
       return <SequenceGame gameId={meta.id} title={meta.title} emoji={meta.emoji} datasets={[sequence4Blockchain, sequence4Printing]} />;
 
-    // ---------- Chapter 5 ----------
+    // ---------- Chapter 6 ----------
     case 'net-quiz':
       return <QuizGame gameId={meta.id} title={meta.title} emoji={meta.emoji} questions={chapter5Quiz} questionCount={10} accentClass="bg-sky-500" />;
     case 'true-false-net':

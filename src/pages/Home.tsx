@@ -28,7 +28,7 @@ export default function Home() {
           Let's Play &amp; Learn ✨
         </h1>
         <p className="relative mt-2 max-w-sm text-sm text-purple-100">
-          Class 6 Computer · Pick a chapter to start playing!
+          Class 6 Computer Science · Pick a chapter to start playing!
         </p>
       </section>
 

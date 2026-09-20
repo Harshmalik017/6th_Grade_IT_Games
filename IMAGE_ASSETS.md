@@ -1,4 +1,4 @@
-# Images Needed for Riya's Tech Play 🎮
+# Images Needed for Learning Games 🎮
 
 This app already works today using emoji everywhere. Every image below is **optional** —
 the app automatically falls back to an emoji if an image is missing, so you can generate
@@ -13,7 +13,7 @@ as many or as few of these as you like, and drop them in whenever ready.
 ## Recommended style (use this in every prompt for a consistent look)
 > "Flat vector illustration, cute and playful, bright bold colors on a transparent or white
 > background, thick clean outlines, simple shapes, friendly rounded style suitable for a
-> 6th-grade kids' learning app, no text or letters in the image, centered composition,
+> kids' learning app, no text or letters in the image, centered composition,
 > square 1:1 aspect ratio."
 
 Recommended size: **512×512px**, PNG, transparent background if possible.
@@ -25,8 +25,13 @@ Recommended size: **512×512px**, PNG, transparent background if possible.
 | Filename | Used on | Prompt idea |
 |---|---|---|
 | `chapter4-cover.png` | Chapter 4 home card | A friendly cartoon robot surrounded by floating icons: VR headset, drone, hologram, 3D printer — futuristic and colorful |
-| `chapter5-cover.png` | Chapter 5 home card | A cute globe with Wi-Fi signal waves, connected to a laptop, smartphone and shopping bag icons — internet/connectivity theme |
+| `chapter5-cover.png` | Riya Chapter 6 home card | A cute globe with Wi-Fi signal waves, connected to a laptop, smartphone and shopping bag icons — internet/connectivity theme |
 | `combined-cover.png` | "Both Chapters" home card | A golden trophy with sparkles, surrounded by mixed tech + internet icons, celebratory "all-star" theme |
+| `chapter-birds-cover.png` | Siya Chapter 4 home card | A cute group of birds with feathers, beaks, claws and a nest, bright nature colors |
+| `chapter-organs-cover.png` | Siya Chapter 6 home card | Friendly cartoon body organs and bones working together, kid-safe and cheerful |
+| `combined-siya-cover.png` | Siya "Both Chapters" home card | A golden trophy with cute birds, feathers, bones and organ icons around it |
+| `profile-riya.png` | Riya profile card | A smiling Class 6 girl holding a laptop or book, cheerful learning theme |
+| `profile-siya.png` | Siya profile card | A smiling Class 3 girl with a science book, birds and body learning icons nearby |
 
 ---
 
@@ -67,7 +72,7 @@ Recommended size: **512×512px**, PNG, transparent background if possible.
 
 ---
 
-## 4. Chapter 5 concept icons (Internet Services)
+## 4. Riya Chapter 6 concept icons (Internet Services)
 
 | Filename | Concept | Prompt idea |
 |---|---|---|

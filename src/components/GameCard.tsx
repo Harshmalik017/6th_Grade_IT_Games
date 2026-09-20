@@ -1,13 +1,27 @@
 import { Link } from 'react-router-dom';
 import StarRating from './StarRating';
 import TechImage from './TechImage';
-import type { GameMeta } from '../data/gamesList';
 import type { GameResult } from '../utils/storage';
 
-export default function GameCard({ game, result }: { game: GameMeta; result?: GameResult }) {
+interface GameCardMeta {
+  id: string;
+  title: string;
+  description: string;
+  emoji: string;
+  img: string;
+  gradient: string;
+}
+
+interface Props {
+  game: GameCardMeta;
+  result?: GameResult;
+  to?: string;
+}
+
+export default function GameCard({ game, result, to }: Props) {
   return (
     <Link
-      to={`/game/${game.id}`}
+      to={to ?? `/game/${game.id}`}
       className="group relative flex flex-col overflow-hidden rounded-3xl bg-white shadow-md shadow-purple-100 ring-1 ring-black/5 transition active:scale-95"
     >
       <div className={`flex h-24 items-center justify-center bg-gradient-to-br ${game.gradient}`}>
