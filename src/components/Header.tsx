@@ -5,32 +5,50 @@ import { resetAllScores, totalStarsCollected } from '../utils/storage';
 import { gamesList } from '../data/gamesList';
 import { siyaGamesList } from '../data/siyaGamesList';
 import { riyaScienceGamesList } from '../data/riyaScience';
+import { allTablesGameIds, allSquaresCubesGameIds } from '../data/mathsGames';
 import { useEffect, useState } from 'react';
 
-const riyaGameIds = [...gamesList.map((g) => g.id), ...riyaScienceGamesList.map((g) => g.id)];
-const allGameIds = [...riyaGameIds, ...siyaGamesList.map((g) => g.id)];
+const riyaComputerIds = gamesList.map((g) => g.id);
+const riyaScienceIds = riyaScienceGamesList.map((g) => g.id);
+const siyaScienceIds = siyaGamesList.map((g) => g.id);
+const tablesIds = allTablesGameIds();
+const sqCubeIds = allSquaresCubesGameIds();
+const riyaGameIds = [...riyaComputerIds, ...riyaScienceIds, ...tablesIds, ...sqCubeIds];
+const siyaGameIds = [...siyaScienceIds, ...tablesIds];
+const allGameIds = Array.from(new Set([...riyaGameIds, ...siyaGameIds]));
 
 function idsForPath(pathname: string): string[] {
+  if (pathname.startsWith('/riya/maths/squares-cubes')) return sqCubeIds;
+  if (pathname === '/riya/maths') return [...tablesIds, ...sqCubeIds];
+  if (pathname.startsWith('/riya/maths/')) return tablesIds;
+  if (pathname === '/riya/science' || pathname.startsWith('/riya/science/')) {
+    return riyaScienceIds;
+  }
+  if (pathname === '/riya/computer' || pathname.startsWith('/chapter/') || pathname.startsWith('/game/')) {
+    return riyaComputerIds;
+  }
   if (pathname === '/riya') {
     return riyaGameIds;
   }
-  if (pathname === '/riya/science' || pathname.startsWith('/riya/science/')) {
-    return riyaScienceGamesList.map((g) => g.id);
+  if (pathname === '/siya/maths' || pathname.startsWith('/siya/maths/')) return tablesIds;
+  if (pathname === '/siya/science' || pathname.startsWith('/siya/chapter/') || pathname.startsWith('/siya/game/')) {
+    return siyaScienceIds;
   }
-  if (pathname === '/riya/computer' || pathname.startsWith('/chapter/') || pathname.startsWith('/game/')) {
-    return gamesList.map((g) => g.id);
-  }
-  if (pathname === '/siya' || pathname.startsWith('/siya/')) {
-    return siyaGamesList.map((g) => g.id);
+  if (pathname === '/siya') {
+    return siyaGameIds;
   }
   return allGameIds;
 }
 
 function titleForPath(pathname: string): string {
-  if (pathname === '/siya' || pathname.startsWith('/siya/')) return "Siya's Science Play";
+  if (pathname.startsWith('/riya/maths/squares-cubes')) return "Riya's Squares & Cubes";
+  if (pathname.startsWith('/riya/maths')) return "Riya's Maths Tables";
   if (pathname === '/riya/science' || pathname.startsWith('/riya/science/')) return "Riya's Science Play";
   if (pathname === '/riya/computer' || pathname.startsWith('/chapter/') || pathname.startsWith('/game/')) return "Riya's Computer Science Play";
   if (pathname === '/riya') return "Riya's Learning Play";
+  if (pathname.startsWith('/siya/maths')) return "Siya's Maths Tables";
+  if (pathname === '/siya/science' || pathname.startsWith('/siya/chapter/') || pathname.startsWith('/siya/game/')) return "Siya's Science Play";
+  if (pathname === '/siya') return "Siya's Learning Play";
   return 'Learning Games';
 }
 
@@ -57,6 +75,8 @@ export default function Header() {
     const gameMatch = location.pathname.match(/^\/game\/([^/]+)/);
     const riyaScienceGameMatch = location.pathname.match(/^\/riya\/science\/game\/([^/]+)/);
     const siyaGameMatch = location.pathname.match(/^\/siya\/game\/([^/]+)/);
+    const mathsGameMatch = location.pathname.match(/^\/(riya|siya)\/maths\/table\/([^/]+)\/game\/([^/]+)/);
+    const sqCubeGameMatch = location.pathname.match(/^\/riya\/maths\/squares-cubes\/([^/]+)\/game\/([^/]+)/);
     if (gameMatch) {
       const game = gamesList.find((g) => g.id === gameMatch[1]);
       const group = game?.chapterGroup;
@@ -68,7 +88,13 @@ export default function Header() {
     } else if (siyaGameMatch) {
       const game = siyaGamesList.find((g) => g.id === siyaGameMatch[1]);
       const group = game?.chapterGroup;
-      navigate(group ? `/siya/chapter/${group}` : '/siya');
+      navigate(group ? `/siya/chapter/${group}` : '/siya/science');
+    } else if (mathsGameMatch) {
+      const [, student, table] = mathsGameMatch;
+      navigate(`/${student}/maths/table/${table}`);
+    } else if (sqCubeGameMatch) {
+      const [, mode] = sqCubeGameMatch;
+      navigate(`/riya/maths/squares-cubes/${mode}`);
     } else if (location.pathname.startsWith('/chapter/')) {
       navigate('/riya/computer');
     } else if (location.pathname.startsWith('/riya/science/chapter/')) {
@@ -76,7 +102,19 @@ export default function Header() {
     } else if (location.pathname === '/riya/computer' || location.pathname === '/riya/science') {
       navigate('/riya');
     } else if (location.pathname.startsWith('/siya/chapter/')) {
+      navigate('/siya/science');
+    } else if (location.pathname === '/siya/science') {
       navigate('/siya');
+    } else if (/^\/riya\/maths\/table\/[^/]+$/.test(location.pathname)) {
+      navigate('/riya/maths');
+    } else if (/^\/siya\/maths\/table\/[^/]+$/.test(location.pathname)) {
+      navigate('/siya/maths');
+    } else if (location.pathname === '/riya/maths' || location.pathname === '/siya/maths') {
+      navigate(location.pathname.startsWith('/riya') ? '/riya' : '/siya');
+    } else if (/^\/riya\/maths\/squares-cubes\/[^/]+$/.test(location.pathname)) {
+      navigate('/riya/maths/squares-cubes');
+    } else if (location.pathname === '/riya/maths/squares-cubes') {
+      navigate('/riya/maths');
     } else {
       navigate('/');
     }

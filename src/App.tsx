@@ -10,8 +10,15 @@ import RiyaScienceHome from './pages/RiyaScienceHome';
 import RiyaScienceChapterPage from './pages/RiyaScienceChapterPage';
 import RiyaScienceGamePage from './pages/RiyaScienceGamePage';
 import SiyaHome from './pages/SiyaHome';
+import SiyaScienceHome from './pages/SiyaScienceHome';
 import SiyaChapterPage from './pages/SiyaChapterPage';
 import SiyaGamePage from './pages/SiyaGamePage';
+import MathsHome from './pages/MathsHome';
+import MathsTablePage from './pages/MathsTablePage';
+import MathsGamePage from './pages/MathsGamePage';
+import SquaresCubesHome from './pages/SquaresCubesHome';
+import SquaresCubesTablePage from './pages/SquaresCubesTablePage';
+import SquaresCubesGamePage from './pages/SquaresCubesGamePage';
 
 export default function App() {
   return (
@@ -29,8 +36,15 @@ export default function App() {
             <Route path="/riya/science/chapter/:group" element={<RiyaScienceChapterPage />} />
             <Route path="/riya/science/game/:gameId" element={<RiyaScienceGamePage />} />
             <Route path="/siya" element={<SiyaHome />} />
+            <Route path="/siya/science" element={<SiyaScienceHome />} />
             <Route path="/siya/chapter/:group" element={<SiyaChapterPage />} />
             <Route path="/siya/game/:gameId" element={<SiyaGamePage />} />
+            <Route path="/:student/maths" element={<MathsHome />} />
+            <Route path="/:student/maths/table/:table" element={<MathsTablePage />} />
+            <Route path="/:student/maths/table/:table/game/:gameType" element={<MathsGamePage />} />
+            <Route path="/riya/maths/squares-cubes" element={<SquaresCubesHome />} />
+            <Route path="/riya/maths/squares-cubes/:mode" element={<SquaresCubesTablePage />} />
+            <Route path="/riya/maths/squares-cubes/:mode/game/:gameType" element={<SquaresCubesGamePage />} />
           </Routes>
         </div>
         <Footer />

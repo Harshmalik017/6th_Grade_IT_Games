@@ -46,6 +46,21 @@ export default function RiyaHome() {
             <span className="text-5xl drop-shadow-sm transition group-active:scale-90">🔬</span>
           </div>
         </Link>
+
+        <Link
+          to="/riya/maths"
+          className="group overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-500 to-fuchsia-500 p-5 text-white shadow-xl shadow-purple-200 transition active:scale-[0.97] sm:col-span-2"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wide text-purple-100">Subject</p>
+              <h3 className="mt-1 font-display text-2xl font-extrabold">Maths Tables</h3>
+              <p className="mt-2 text-sm text-white/85">Tables 1-20 + Squares &amp; Cubes of Numbers</p>
+              <p className="mt-4 rounded-full bg-white/20 px-3 py-1 text-xs font-bold backdrop-blur-sm">115 games</p>
+            </div>
+            <span className="text-5xl drop-shadow-sm transition group-active:scale-90">🔢</span>
+          </div>
+        </Link>
       </div>
     </div>
   );

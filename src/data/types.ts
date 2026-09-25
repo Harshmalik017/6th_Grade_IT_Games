@@ -4,7 +4,7 @@ export type ChapterId = 2 | 3 | 4 | 5 | 6;
 
 export interface QuizQuestion {
   id: string;
-  chapter: ChapterId;
+  chapter?: ChapterId;
   question: string;
   options: string[];
   answerIndex: number;
@@ -14,7 +14,7 @@ export interface QuizQuestion {
 
 export interface TrueFalseItem {
   id: string;
-  chapter: ChapterId;
+  chapter?: ChapterId;
   statement: string;
   answer: boolean;
 }
@@ -30,7 +30,7 @@ export interface MatchPair {
 
 export interface FillBlankItem {
   id: string;
-  chapter: ChapterId;
+  chapter?: ChapterId;
   sentence: string; // contains "___" as the blank placeholder
   options: string[];
   answer: string;
